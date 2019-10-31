@@ -30,8 +30,9 @@ app.use(express.json());
 app.use(cors());
 
 app.get('/', (req,res)=>{
-  return db.select('*').from('users')
-  .then(data => res.json(data));
+  res.send('it is working !')
+  // return db.select('*').from('users')
+  // .then(data => res.json(data));
 })
 
 app.post('/signin', (req,res) => {signin.handleSignin(req,res, db, bcrypt)})
