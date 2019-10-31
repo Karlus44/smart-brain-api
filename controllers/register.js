@@ -5,7 +5,9 @@
     return res.status(400).json('incorrect form submission');
   }
   const hash = bcrypt.hashSync(password);
+  console.log(hash);
   db.transaction(trx => {
+    console.log(hash,email);
     trx.insert({
       hash: hash,
       email: email
