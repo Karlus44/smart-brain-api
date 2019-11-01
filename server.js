@@ -15,7 +15,7 @@ const db = knex({
     ssl: true,
     // host : '127.0.0.1',
     // user : 'karlus',
-    // password : 'pass',
+    // password : '****',
     // database : 'smart-brain'
   }
 });
@@ -31,9 +31,9 @@ app.use(express.json());
 app.use(cors());
 
 app.get('/', (req,res)=>{
-  res.send('it is working !')
-  // return db.select('*').from('users')
-  // .then(data => res.json(data));
+  // res.send('it is working !')
+  return db.select('*').from('users')
+  .then(data => res.json(data));
 })
 
 app.post('/signin', (req,res) => {signin.handleSignin(req,res, db, bcrypt)})
