@@ -11,22 +11,22 @@
 			email : email,
 			hash : hash
 		})
-		.into('login')
-		.returning('email')
-		.then( loginEmail => {
+    .into('login')
+    .returning('email')
+    .then( loginEmail => {
 			trx.insert({
 				email : loginEmail[0],
 				name : name,
 				joined : new Date()
 			})
-			.into('users')
-			.returning('*')
-			.then( user => res.json(user[0]))
-			.then(trx.commit)
-			.catch(trx.rollback)
+      .into('users')
+      .returning('*')
+      .then( user => res.json(user[0]))
+      .then(trx.commit)
+      .catch(trx.rollback)
 		})
 	})
-	.catch(err => res.status(400).json("Unable to register"))
+  .catch(err => res.status(400).json("Unable to register"))
 }
 
 module.exports = {
